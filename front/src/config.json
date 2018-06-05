@@ -1,0 +1,6 @@
+{
+  "dev_host": "http://localhost:8080",
+  "dev_timeout": "10000",
+  "online_host": "http://zb.epihealth.cn",
+  "online_timeout": "10000"
+}

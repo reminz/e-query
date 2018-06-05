@@ -1,20 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Query from '@/components/Query'
-import Result from '@/components/Result'
+import Query from '@/views/Query'
+import Result from '@/views/Result'
+import Home from '@/views/Home'
+
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
+      path: '*',
+      redirect: '/'
+    },
+    {
       path: '/',
+      component: Home
+    },
+    {
+      path: '/query/:query',
       name: 'query',
       component: Query
     },
     {
-      path: 'result',
+      path: '/result',
       name: 'result',
       component: Result
     }
   ]
 })
+
+export default router

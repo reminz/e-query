@@ -1,0 +1,34 @@
+.OHSToast-container{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+#OHSToast {
+top: -100px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 240px;
+    height: 240px;
+    background-image: linear-gradient(to bottom, RGBA(246,245,242,1), RGBA(226,224,218,1));
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+#OHSToast .OHSToast-image {
+    bottom: -30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#OHSToast .OHSToast-text {
+    color: #ad7a00;
+    font-size: 26px;
+    align-content: center;
+}
