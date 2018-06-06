@@ -1,4 +1,4 @@
-import _edps from './epds.json'
+import _edps from './edps.json'
 import _press from './press.json'
 import _answer from './answer.json'
 import _pressTable from './table.json'
