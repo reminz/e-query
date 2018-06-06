@@ -22,7 +22,7 @@ let router = new Router({
       component: Query
     },
     {
-      path: '/result',
+      path: '/query/:query/score/:score',
       name: 'result',
       component: Result
     }

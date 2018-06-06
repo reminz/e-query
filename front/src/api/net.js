@@ -11,24 +11,17 @@ function appendParams (url, params = {}) {
   for (let key in params) {
     str += encodeURI(key) + '=' + encodeURI(params[key]) + '&'
   }
-  str = str.substr(0, str.length - 1)
-
-  const parser = document.createElement('a')
-  parser.href = url
-  let search = parser.search
-  if (search.length === 0) {
-    search = '?' + str
-  } else {
-    search = search + '&' + str
+  if (str.length > 0) {
+    str = str.substr(0, str.length - 1)
+    url += '?' + str
   }
-  return `${host}${parser.pathname}${search}${parser.hash}`
+  return url
 }
 
 function equeue (method, url, data, callback) {
   if (method === 'GET' && data) {
     url = appendParams(url, data)
   }
-  var self = this
   let fn = function (n) {
     axios({
       withCredentials: true,
@@ -43,7 +36,6 @@ function equeue (method, url, data, callback) {
         error.msg = error.msg || '网络请求失败'
 
         if (callback) callback(error)
-        self.showError(error)
       } else {
         fn(n - 1)
       }
@@ -52,7 +44,6 @@ function equeue (method, url, data, callback) {
   return fn(2)
 }
 export function request (method, url, data, callback, hideLoading) {
-  var self = this
   function networkResponse (response) {
     let error = {}
 
@@ -71,13 +62,13 @@ export function request (method, url, data, callback, hideLoading) {
         error.msg = res.msg ? res.msg : '获取数据失败'
 
         if (res.login_url) {
+          error.msg = '正在跳转登录'
+          if (callback) {
+            callback(error)
+          }
           // 跳转登录
           window.location.href = res.login_url
-
-          error.msg = '正在跳转登录'
         }
-        self.showError(error)
-
         if (callback) {
           callback(error)
         }
@@ -85,15 +76,10 @@ export function request (method, url, data, callback, hideLoading) {
     } else {
       error.ret = response.status ? response.status : -1
       error.msg = response.msg || '网络请求失败'
-      self.showError(error)
 
       if (callback) {
         callback(error)
       }
-    }
-
-    if (!hideLoading) {
-      event.sendEvent('toast_loading_end')
     }
   }
   equeue(method, url, data, networkResponse)

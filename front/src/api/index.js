@@ -1,5 +1,9 @@
-// import * as Net from './net.js'
+import * as Net from './net.js'
 
-export function login (callback) {
-  // Net.request('get', '/wyeth/user/getLoginInfo', {}, callback)
+export function getLoginInfo (callback) {
+  Net.request('GET', '/wyeth/user/getLoginInfo', {}, callback)
+}
+
+export function postAnswer (data, callback) {
+  Net.request('POST', '/survey/submit', data, callback)
 }
