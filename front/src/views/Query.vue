@@ -186,7 +186,7 @@
             thiz.message.des = '恭喜您，问卷提交成功！'
             setTimeout(function () {
               $('#myModal').modal('hide')
-              thiz.$router.go({ name: 'result', params: { query: this.$route.params.query, score: this.score } })
+              thiz.$router.push({ name: 'result', params: { query: thiz.$route.params.query, score: thiz.user_score } })
             }, 1000)
           } else {
             thiz.message.des = `问卷提交失败，${res.msg}！`
