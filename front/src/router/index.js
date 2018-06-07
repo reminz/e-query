@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Query from '@/views/Query'
 import Result from '@/views/Result'
 import Home from '@/views/Home'
+import List from '@/views/List'
 
 Vue.use(Router)
 
@@ -15,6 +16,10 @@ let router = new Router({
     {
       path: '/',
       component: Home
+    },
+    {
+      path: '/list',
+      component: List
     },
     {
       path: '/query/:query',
