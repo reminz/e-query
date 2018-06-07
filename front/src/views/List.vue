@@ -239,7 +239,6 @@
         this.show()
       },
       checkPage: function () {
-        let tmp_pages = []
         let pageCount = this.total % this.limit === 0 ? this.total / this.limit : this.total / this.limit + 1
         this.pages = parseInt(pageCount)
       },
