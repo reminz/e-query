@@ -21,25 +21,15 @@
             <th>
               {{index + 1}}
             </th>
-            <th>
-              {{index + 2}}
-            </th>
-            <th>
-              {{index + 3}}
-            </th>
-            <th>
-              {{index + 4}}
-            </th>
-
-            <!-- <tr>
-                  {{item.time}}
-                </tr>
-                <tr>
-                  {{item.title}}
-                </tr>
-                <tr>
-                  {{item.score}}
-                </tr> -->
+            <tr>
+              {{item.time}}
+            </tr>
+            <tr>
+              {{item.title}}
+            </tr>
+            <tr>
+              {{item.score}}
+            </tr>
           </tr>
         </tbody>
         <tbody v-else>
@@ -148,9 +138,9 @@
           return
         }
         this.page += 1
-        if (this.page >= this.pages) { 
-          $('#nextPage').addClass("disabled") 
-          $('#previousPage').removeClass("disabled")        
+        if (this.page >= this.pages) {
+          $('#nextPage').addClass("disabled")
+          $('#previousPage').removeClass("disabled")
         }
         this.checkData()
       },
@@ -160,7 +150,7 @@
           Api.getLoginInfo(function (res) {
             if (res.ret === 1) {
               thiz.user_info = res.data
-              if(!res.data.avatar) $("#userAvatar").attr("src", res.data.avatar)
+              if (!res.data.avatar) $("#userAvatar").attr("src", res.data.avatar)
               thiz.getAnswer()
             } else {
               thiz.user_info = null
