@@ -21,15 +21,15 @@
             <th>
               {{index + 1}}
             </th>
-            <tr>
+            <th>
               {{item.time}}
-            </tr>
-            <tr>
+            </th>
+            <th>
               {{item.title}}
-            </tr>
-            <tr>
+            </th>
+            <th>
               {{item.score}}
-            </tr>
+            </th>
           </tr>
         </tbody>
         <tbody v-else>
@@ -79,6 +79,7 @@
 
 <script>
   import * as Api from '../api'
+  // import testCacse from '../query/test.json'
   export default {
     data() {
       return {
@@ -97,6 +98,7 @@
     },
     created() {
       this.checkLogin()
+      // this.appendList(testCacse.answerList.data)
       $("title").html("个人中心")
     },
     // watch: {
@@ -211,7 +213,7 @@
         let end_id = page * limit
         let tmp_showData = []
         for (; star_id <= end_id; star_id++) {
-          tmp_showData.push(this.listData[star_id])
+          if (this.listData[star_id]) tmp_showData.push(this.listData[star_id])
         }
         this.showData = tmp_showData
       },
@@ -231,14 +233,6 @@
       checkPage: function () {
         let pageCount = this.total % this.limit === 0 ? this.total / this.limit : this.total / this.limit + 1
         this.pages = parseInt(pageCount)
-      },
-      disableClick: function () {
-        if (this.page <= 1) {
-
-        }
-      },
-      enableClick: function () {
-
       }
     }
   }
