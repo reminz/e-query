@@ -150,7 +150,7 @@
           Api.getLoginInfo(function (res) {
             if (res.ret === 1) {
               thiz.user_info = res.data
-              if (!res.data.avatar) $("#userAvatar").attr("src", res.data.avatar)
+              if (res.data.avatar) $("#userAvatar").attr("src", res.data.avatar)
               thiz.getAnswer()
             } else {
               thiz.user_info = null
