@@ -126,13 +126,13 @@
     created() {
       $('body').css({ 'background-color': '#FAEBD7' })
       this.checkLogin()
-      this.query = query
       if (query && query[this.$route.params.query]) {
         this.query = query[this.$route.params.query]
         this.query.questions.forEach(item => {
           item['answer'] = []
         })
         this.score = query.answer[this.$route.params.query]
+        $("title").html(this.query.title)
       } else {
         this.$router.push({ path: '/' })
       }

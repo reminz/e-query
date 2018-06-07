@@ -97,7 +97,7 @@
     },
     created() {
       this.checkLogin()
-      // this.checkPage()
+      $("title").html("个人中心")
     },
     // watch: {
     //   page: {
